@@ -1,5 +1,3 @@
-# IAZI AMS IONIC2 (Mobile APPs)
-
 ## How to install and run the project
 
 ### Requirements
@@ -8,8 +6,8 @@
 
 ### 1. Clone the project on your machine, install the dependencies and start
 
-    $ git clone http://MYB@vmsebitbucket.iazi.local:7990/scm/itprod/ams-ionic.git
-    $ cd ams-ionic
+    $ git clone https://github.com/izangular/ISpotPrice2.git
+    $ cd ISpotPrice2
     $ npm install -g ionic cordova
     $ cordova plugin add cordova-plugin-camera --variable CAMERA_USAGE_DESCRIPTION="'$(PRODUCT_NAME)' uses camera" --variable PHOTOLIBRARY_USAGE_DESCRIPTION="'$(PRODUCT_NAME)' uses photos"
     $ ionic plugin add cordova-plugin-file
@@ -37,14 +35,3 @@
 - It is OK to commit your feature branch on github
 - When everything is working fine you can merge your branch back with dev and push to github
 
-### Issue tracking & project management
-
-- Iazi Jira
-
-## Editing
-
-### VS Code
-
-Instructions go here
-
-### Other IDEs
