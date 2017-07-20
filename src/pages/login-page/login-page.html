@@ -1,0 +1,70 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'AMS Surveyors'| translate }}
+        <span class="network-icon">
+          <ion-icon [name]="stylingService.getNetworkIcon(network.type)" [color]="stylingService.getNetworkColor(network.type)"></ion-icon>
+        </span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+ 
+  <div padding id="cloud-layer">
+  <form (ngSubmit)="login()" #registerForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <img class="logo" src="assets/img/logo-Blue.svg" />
+      </ion-col>
+    </ion-row>
+ 
+    <ion-row>
+      <ion-col>
+          <ion-list no-lines>
+            <ion-item>
+                <ion-input type="text" placeholder="{{ 'Email address' | translate }}" name="email" [(ngModel)]="registerCredentials.userEmail" required></ion-input>            
+            </ion-item>
+            <ion-item>
+                <ion-input  type="password" placeholder="{{ 'Password' | translate }}" name="password" [(ngModel)]="registerCredentials.userPwd" required></ion-input>            
+            </ion-item>
+            <div>
+              <div class="container-login-extraoptions">
+                <span class="container-login-extraoptions-keep">
+                  <ion-checkbox name="keepLogin" [(ngModel)]="registerCredentials.keepLogin"></ion-checkbox>
+                  {{ 'login_keepsession_title' | translate }}.
+                </span>
+                <span class="container-login-extraoptions-recover"><a [href]="getRecoverPasswordUrl()">
+                  {{ 'login_recover_title' | translate }}</a></span>
+              </div>
+              <div>
+
+              <ion-item *ngIf="environmentService.selectedEnvironmentAllowed">
+                <ion-select name="environmentId" [(ngModel)]="environmentId" (ionChange)="onSelectChange($event)">
+                  <ion-option value="0">DEV environment</ion-option>
+                  <ion-option value="1">INT environment</ion-option>
+                  <ion-option value="2">TEST environment</ion-option>
+                  <ion-option value="3">PROD environment</ion-option>
+                </ion-select>
+              </ion-item>
+              </div>
+            </div>
+          </ion-list>
+      </ion-col>
+    </ion-row>
+ 
+    <ion-row>
+      <ion-col>
+        <button ion-button class="login-button" full type="submit" [disabled]="!registerForm.form.valid">{{ 'Login'| translate }} </button>
+      </ion-col>
+    </ion-row>
+  </form>
+  </div>
+ 
+</ion-content>

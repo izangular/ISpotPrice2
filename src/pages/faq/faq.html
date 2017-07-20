@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Frequently Asked Questions</ion-title>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+  <ion-card-header>
+    {{ 'What is the meaning of data colors?' | translate }}
+  </ion-card-header>
+
+  <ion-list>
+    <ion-item>
+      <span [class]="stylingService.getStyleIconBySourceCode('I')" style="margin-right:8px!important;" item-left></span>
+      {{ 'Data imported' | translate }}
+    </ion-item>
+
+    <ion-item>
+      <span [class]="stylingService.getStyleIconBySourceCode('M')" style="margin-right:8px!important;" item-left></span>
+      {{ 'Data manual modified' | translate }}
+    </ion-item>
+
+    <ion-item>
+      <span [class]="stylingService.getStyleIconBySourceCode('C')" style="margin-right:8px!important;" item-left></span>
+      {{ 'Data automatically calculated' | translate }}
+    </ion-item>
+
+    <ion-item>
+      <span [class]="stylingService.getStyleIconByStatusCode('G')" item-left></span>
+      {{ 'Data checked' | translate }}
+    </ion-item>
+
+    <ion-item>
+      <span [class]="stylingService.getStyleIconByStatusCode('R')" item-left></span>
+      {{ 'Data with problems' | translate }}
+    </ion-item>
+
+    <ion-item>
+      <span [class]="stylingService.getStyleIconByStatusCode('-')" item-left></span>
+      {{ 'Undefined' | translate }}
+    </ion-item>
+
+  </ion-list>
+</ion-card>
+
+  <ion-card>
+  <ion-card-header>
+    {{ 'Which APP versión I´m using?' | translate }}
+  </ion-card-header>
+
+  <ion-list>
+    <ion-item>
+      <span style="margin-right:8px!important;" item-left></span>
+      {{ packageParsed.version }}
+    </ion-item>
+
+  </ion-list>
+</ion-card>
+
+</ion-content>
+ 

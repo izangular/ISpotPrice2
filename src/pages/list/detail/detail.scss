@@ -1,0 +1,30 @@
+@import '../../global.scss';
+
+.ios, .md {
+    .appraise-content{
+        padding-top: 20px;
+    }
+
+    .row-data {
+        min-height: 35px;
+    }
+
+    .container-actions {
+        text-align: center;
+
+        ion-icon {
+            margin-right: 5px;
+        }
+    }
+    
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .item-md ion-thumbnail {
+        min-width: 50px;
+        min-height: 50px;
+    }
+}
+

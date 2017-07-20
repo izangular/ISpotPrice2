@@ -1,0 +1,33 @@
+page-list-evaluation-edit {
+    ion-range {
+        padding-top: 0px!important;
+
+        ion-label {
+            display:none;
+        }
+    }
+    textarea {
+        max-width: 100%;
+        width: 100%;
+        height: 100px;
+    }
+}
+
+    .button-save {
+        label {
+            font-weight: bold;
+            margin-left: 5px;
+        }
+    }
+
+    .title-enumrange {
+        margin-top: 0px!important;
+    }
+
+    .title2-enumrange {
+        text-align: center;
+    }
+
+    .input-cover {
+        position: static;
+    }

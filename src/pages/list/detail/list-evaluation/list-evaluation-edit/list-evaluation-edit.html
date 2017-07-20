@@ -1,0 +1,116 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'mandata_editor_title'| translate }}
+        <span class="network-icon">
+          <ion-icon [name]="stylingService.getNetworkIcon(network.type)" [color]="stylingService.getNetworkColor(network.type)"></ion-icon>
+        </span>
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button class="button-save" (click)="setData()" color="primary" *ngIf="isDataModified()">
+        <ion-icon name="checkmark-circle-outline"></ion-icon><label>{{ 'Save' | translate }}</label>
+      </button>
+    </ion-buttons>
+
+</ion-navbar>
+    
+</ion-header>
+
+
+<ion-content class="back-content-level2">
+
+  <ion-item no-lines id="statusColor">
+    <ion-label [class]="stylingService.getStyleBarBySourceCode(valuationData.sourceCode)"></ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="valuationData.type !== 'enumrange'">
+    <ion-label color="primary" stacked>{{ valuationData.keyLabel }}      
+      <span *ngIf="valuationData.type === 'currency'"> (CHF)</span></ion-label>
+
+    <ion-input 
+              *ngIf=" valuationData.type !== 'multiline-string' 
+                      && valuationData.type !== 'bit'
+                      && valuationData.type !== 'enum'
+                      && valuationData.type !== 'date'
+                      && valuationData.type !== 'datetime'
+                      && valuationData.type !== 'enumrange'" 
+              type="text" 
+              placeholder="{{ 'Type here' | translate }}.." 
+              [(ngModel)]="valuationData.value"
+              (disabled)="!valuationData.editable"></ion-input>
+
+    <ion-textarea 
+              *ngIf="valuationData.type === 'multiline-string'"
+              placeholder="{{ 'Type here' | translate }}.." 
+              (disabled)="!valuationData.editable" 
+              [(ngModel)]="valuationData.value" ></ion-textarea>
+    <ion-toggle 
+              *ngIf="valuationData.type === 'bit'" 
+              [(ngModel)]="valuationData.value" 
+              color="secondary"
+              (disabled)="!valuationData.editable"></ion-toggle>
+
+      <!-- DATEPICKER -->
+      <ion-datetime 
+                    *ngIf="valuationData.type === 'date'" 
+                    displayFormat="DD.MM.YYYY" 
+                    [(ngModel)]="valuationData.value"></ion-datetime>
+
+      <!-- DATETIME PICKER -->
+      <ion-datetime 
+                    *ngIf="valuationData.type === 'datetime'" 
+                    displayFormat="DD.MM.YYYY HH:mm" 
+                    [(ngModel)]="valuationData.value"></ion-datetime>
+
+      <!-- ENUM; -->       
+      <ion-select 
+              *ngIf="valuationData.type === 'enum'"
+              [(ngModel)]="valuationData.value" 
+              (disabled)="!valuationData.editable" >
+              <ion-option *ngFor="let element of valuationData.valuesEnum" [value] = "element.value">{{element.label}}</ion-option></ion-select >  
+
+  </ion-item>
+
+  <!-- RANGE and ENUMRANGE -->
+  <ion-item *ngIf="valuationData.type === 'range' || valuationData.type === 'enumrange'" >
+    <ion-label color="primary" class="title-enumrange" stacked >{{ valuationData.keyLabel }}</ion-label>
+    <ion-label class="title2-enumrange" >{{ getEnumRangeLabel(valuationData.valuesEnum, valuationData.value) }} </ion-label>
+    <ion-range 
+              [min]="parseValidators(valuationData.validators).min" 
+              [max]="parseValidators(valuationData.validators).max" 
+              step="0.1" 
+              [(ngModel)]="valuationData.value"
+              (disabled)="!valuationData.editable" >
+      <ion-label range-left>{{ parseValidators(valuationData.validators).min }}</ion-label>
+      <ion-label range-right>{{ parseValidators(valuationData.validators).max }}</ion-label>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked >{{ 'Comment' | translate }}</ion-label>
+    <ion-textarea 
+                (disabled)="!valuationData.editable" 
+                [(ngModel)]="valuationData.comment" 
+                placeholder="{{ 'Type here' | translate }}.."></ion-textarea>
+  </ion-item>
+  
+  <ion-item no-lines>
+    <ion-label color="primary" stacked>{{ 'Status' | translate }}</ion-label>
+    <ion-select [(ngModel)]="valuationData.statusCode" (disabled)="!valuationData.editable">
+      <ion-option value="G" style='color:green;'>{{ 'Green' | translate }}</ion-option>
+      <ion-option value="R" style='color:red;'>{{ 'Red' | translate }}</ion-option>
+      <ion-option value="">{{ 'None' | translate }}</ion-option>
+    </ion-select >  
+  </ion-item>
+
+  <div class="section-separator-level2">{{ 'Options' | translate }}</div>
+
+  <button ion-item (click)="historicTapped(valuationData)" class="item-option">
+    <ion-label >History</ion-label>
+    <ion-badge *ngIf="valuationData.history" item-right>{{ valuationData.history.length }}</ion-badge>
+  </button>
+
+  <!--div style="margin-top:200px;margin-bottom:200px;">{{ valuationData | json }}</div-->
+
+</ion-content>

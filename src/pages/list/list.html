@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'Appraisals list' | translate }}
+        <span class="network-icon">
+          <ion-icon [name]="stylingService.getNetworkIcon(network.type)" [color]="stylingService.getNetworkColor(network.type)"></ion-icon>
+        </span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="{{ 'Pull to refresh' | translate }}"
+      refreshingSpinner="circles"
+      refreshingText="{{ 'Refreshing' | translate }}...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  <div class="filter-container">
+    <ion-item >
+      <ion-select name="filterTimes" [(ngModel)]="filterSelected" (ionChange)="onSelectFilterChange($event)">
+        <ion-option value="0">{{ 'All' | translate }}</ion-option>
+        <ion-option value="1">{{ 'From today' | translate }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <ion-list>
+    <h3 *ngIf="!items || items.length==0" class="no-appraisals">{{ 'No appraisals found' | translate }}</h3>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item.appraise)" [class]="stylingService.getStyleHomeIcon(item.appraise.visitDateTime)">
+      <ion-icon [name]="item.icon" item-left></ion-icon>
+      <span *ngIf="!item.appraise.visitDateTime">({{ 'No apointment date found' | translate }})</span>
+      {{ item.appraise.visitDateTime  | amCalendar }}
+      <div class="item-note" item-right>
+        {{ item.appraise.address }}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

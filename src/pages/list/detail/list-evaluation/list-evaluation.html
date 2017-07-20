@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-title>{{ 'mandata_title'| translate }}
+        <span class="network-icon">
+          <ion-icon [name]="stylingService.getNetworkIcon(network.type)" [color]="stylingService.getNetworkColor(network.type)"></ion-icon>
+        </span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="{{ 'Pull to refresh' | translate }}"
+        refreshingSpinner="circles"
+        refreshingText="{{ 'Refreshing' | translate }}...">
+      </ion-refresher-content>
+    </ion-refresher>
+  <ion-searchbar (ionInput)="filterElements($event)"></ion-searchbar>
+
+  <ion-item-group *ngFor="let section of valuationLayoutBySectionsFiltered">
+    <ion-item-divider color="light" ><b>{{ section.name }}</b></ion-item-divider>
+
+      <button ion-item *ngFor="let element of section.elements" (click)="valueTapped($event, element)">
+        <ion-label>{{ element.keyLabel }}</ion-label>
+
+        <div 
+            *ngIf="element.valueLabel === null 
+                    && element.type !== 'bit' 
+                    && element.type !== 'float'
+                    && element.type !== 'currency'
+                    && element.type !== 'datetime'
+                    && element.type !== 'date'" class="data-value" item-right>
+          {{ element.value }}</div>
+        <div *ngIf="element.type === 'float'" class="data-value" item-right>{{ parseFloat(element.value) }}</div>
+        <div *ngIf="element.type === 'currency'" class="data-value" item-right>{{ parseCurrency(element.value) }}
+          <span class="data-value data-currency" item-right>CHF</span>
+        </div>
+        <div *ngIf="element.type === 'date'" class="data-value" item-right>{{ element.value | amDateFormat:'DD.MM.YYYY' }}</div>
+        <div *ngIf="element.type === 'datetime'" class="data-value" item-right>{{ element.value | amDateFormat:'DD.MM.YYYY HH:mm' }}</div>
+        <div *ngIf="element.valueLabel !== null && element.type !== 'bit'" class="data-value" item-right>{{ element.valueLabel }}</div>
+        <ion-toggle *ngIf="element.type === 'bit'" [ngModel]="getBitValue(element.value)" color="secondary" disabled="true" item-right></ion-toggle>
+      
+        <span [class]="stylingService.getStyleIconBySourceCode(element.sourceCode)" item-right></span>
+        <span [class]="stylingService.getStyleIconByStatusCode(element.statusCode)" item-right></span>
+      </button>
+
+  </ion-item-group>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-title>{{ 'Historic'| translate }}
+        <span class="network-icon">
+          <ion-icon [name]="stylingService.getNetworkIcon(network.type)" [color]="stylingService.getNetworkColor(network.type)"></ion-icon>
+        </span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="back-content-level3" >
+
+<ion-list>
+  <ion-item class="item-option" *ngFor="let data of field.history" text-wrap>
+    <span [class]="stylingService.getStyleIconBySourceCode(data.sourceCode)" item-left></span>
+    <h2>{{ data.valueLabel }} : {{ data.comment }}</h2>
+    <h3>{{ data.workflowStatusLabel }}</h3>
+    <p>{{ data.createTime | amDateFormat:'DD.MM.YYYY HH:mm' }} , {{ data.employeeLabel }} </p>
+  </ion-item>
+</ion-list>
+
+  <!--ion-item *ngFor="let data of history" [class]="getHistoryCss(row.sourceCode)"-->
+
+
+</ion-content>

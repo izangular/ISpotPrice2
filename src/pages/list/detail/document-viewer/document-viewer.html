@@ -1,0 +1,44 @@
+<!--
+  Generated template for the DocumentViewer page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-title>{{ 'Document viewer'| translate }}
+        <span class="network-icon">
+          <ion-icon [name]="stylingService.getNetworkIcon(network.type)" [color]="stylingService.getNetworkColor(network.type)"></ion-icon>
+        </span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="pinchzoom" *ngIf="loadedDocument && isDocumentImage()">
+        <div>
+            <img 
+              [src]="getDocumentLocalUrl()" 
+              alt="Logo">
+        </div>
+  </div>
+  <pdf-viewer  *ngIf="loadedDocument && isDocumentPdf()"
+              [src]="getDocumentLocalUrl()" 
+              [page]="1" 
+              [original-size]="true" 
+              style="display: block;"
+  ></pdf-viewer>
+  <div *ngIf="loadedDocument && isDocumentAudio()" class="container-audio-controller">
+    <button ion-button color="secondary" (click)="playAudio()" [disabled]="isPlaying">
+      <ion-icon name="mic"></ion-icon>Play audio
+    </button>
+    <button ion-button color="secondary" (click)="stopAudio()" [disabled]="!isPlaying">
+      <ion-icon name="mic"></ion-icon>Stop audio
+    </button>
+  </div>
+</ion-content>

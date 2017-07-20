@@ -1,0 +1,97 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{appraise.contactFirstName}} {{appraise.contactLastName}}
+        <span class="network-icon">
+          <ion-icon [name]="stylingService.getNetworkIcon(network.type)" [color]="stylingService.getNetworkColor(network.type)"></ion-icon>
+        </span>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="{{ 'Pull to refresh' | translate }}"
+        refreshingSpinner="circles"
+        refreshingText="{{ 'Refreshing' | translate }}...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+      <ion-item>{{ 'detail_appointment_title' | translate }} : <b>{{appraise.visitDateTime  | amDateFormat:'HH:mm DD.MM.YYYY' }}</b></ion-item>
+      <ion-item>{{ 'detail_contact_title' | translate }} : <b>{{appraise.contactFirstName}} {{appraise.contactLastName}}</b></ion-item>
+      <ion-item>{{ 'detail_address_title' | translate }} : {{appraise.address}}</ion-item>
+      <ion-item>{{ 'detail_house_type_title' | translate }} : {{appraise.propertyCategoryLabel}}</ion-item>
+      <ion-item>{{ 'detail_externalId_title' | translate }} : {{appraise.externalId}}</ion-item>
+      <button ion-item (click)="appraisalEvaluationTapped()">
+        <ion-icon name="logo-usd" item-start></ion-icon>
+        {{ 'detail_objectdata_title' | translate }}
+      </button>
+      <a ion-item [href]="getUrlLocationMaps()">
+        <ion-icon name="locate" item-start></ion-icon>
+        {{ 'detail_seemap_title' | translate }}
+      </a>
+      <a ion-item [href]="getUrlGoThere()">
+        <ion-icon name="navigate" item-start></ion-icon>
+        {{ 'detail_getthere_title' | translate }}
+      </a>
+    </ion-list>
+    
+    <div class="section-separator">{{ 'detail_documents_title' | translate }}</div>
+
+    <ion-list>
+      <ion-item *ngIf="!appraise.documents || appraise.documents.length == 0">
+        <h2>{{ 'detail_documents_notfound_title' | translate }}</h2>
+      </ion-item>
+      <button ion-item *ngFor="let document of appraise.documents" (click)="documentTapped($event, document)">
+        <ion-thumbnail item-left>
+          <img [src]="getDocumentPreview(document)">
+        </ion-thumbnail>
+        <h2>{{ document.documentTypeLabel }}</h2>
+        <p>{{ document.fileName }} • {{document.createTime  | amDateFormat:'DD.MM.YYYY HH:mm' }}</p>
+    </button>
+  </ion-list>
+</ion-content>
+
+ 
+<ion-footer>
+  <ion-toolbar *ngIf="isRecording" color="secondary">
+    <div class="container-actions">
+      <ion-icon name="mic"></ion-icon>Recording .. XX seconds
+    </div>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <div class="container-actions">
+        <button *ngIf="!isRecording && !isRecorded" ion-button (click)="presentActionSheetImage()">
+          <ion-icon name="camera"></ion-icon>{{ 'detail_action_sendimage_title' | translate }}
+        </button>
+        <button *ngIf="!isRecording && !isRecorded" ion-button (click)="presentActionSheetAudio()">
+          <ion-icon name="mic"></ion-icon>{{ 'detail_action_sendaudio_title' | translate }}
+        </button>
+
+        <button *ngIf="isRecording" ion-button color="danger" (click)="stopAudio()">
+          <ion-icon name="mic"></ion-icon>{{ 'detail_action_stopaudio_title' | translate }}
+        </button>
+        <button *ngIf="isRecorded && !isPlaying" ion-button color="secondary" (click)="playAudio()">
+          <ion-icon name="mic"></ion-icon>{{ 'detail_action_playaudio_title' | translate }}
+        </button>
+        <button *ngIf="isRecorded && isPlaying" ion-button color="secondary">
+          <ion-icon name="mic"></ion-icon>{{ 'detail_action_playingaudio_title' | translate }}
+        </button>
+        <button *ngIf="isRecorded" ion-button color="secondary" (click)="uploadAudio()">
+          <ion-icon name="cloud-upload"></ion-icon>{{ 'detail_action_uploadgaudio_title' | translate }}
+        </button>
+        <button *ngIf="isRecorded" ion-button color="secondary" (click)="reset()">
+          <ion-icon name="ios-close-circle-outline"></ion-icon>
+        </button>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

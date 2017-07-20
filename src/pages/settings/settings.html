@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'Settings'| translate }}
+        <span class="network-icon">
+          <ion-icon [name]="stylingService.getNetworkIcon(network.type)" [color]="stylingService.getNetworkColor(network.type)"></ion-icon>
+        </span>
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item>
+  <ion-label color="primary" stacked>{{ 'Language' | translate }} : </ion-label>
+    <ion-select [(ngModel)]="cultureSelected" (ionChange)="onSelectLanguageChange($event)">
+      <ion-option value="en">{{ 'English' | translate }}</ion-option>
+      <ion-option value="de">{{ 'German' | translate }}</ion-option>
+      <ion-option value="fr">{{ 'French' | translate }}</ion-option>
+      <ion-option value="it">{{ 'Italian' | translate }}</ion-option>
+    </ion-select >  
+  </ion-item>
+
+  <ion-item>
+  <ion-label color="primary" stacked>{{ 'Environment selected' | translate }} : </ion-label>
+    <ion-select [(ngModel)]="environmentId" disabled>
+      <ion-option value="-1">{{ environmentService.getEnvironment().PORTAL_ENV }}</ion-option>
+    </ion-select >  
+  </ion-item>
+
+</ion-content>

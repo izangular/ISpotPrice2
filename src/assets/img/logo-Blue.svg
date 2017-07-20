@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="90px" height="89px" viewBox="0 0 90 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>3D Logo Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path id="path-1" d="M0,0 L89.7997683,0 L89.7997683,88.7498464 L0,88.7498464 L0,0 Z"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="IAZI_DT_Risikomanagement" sketch:type="MSArtboardGroup" transform="translate(-215.000000, -31.000000)">
+            <g id="--copy" sketch:type="MSLayerGroup" transform="translate(215.000000, 8.000000)">
+                <text id="Bewertung-----Beratu" sketch:type="MSTextLayer" font-family="Avenir" font-size="18" font-weight="normal" sketch:alignment="right">
+                    <tspan x="311.616813" y="98" fill="#4A4A4A">Bewertung</tspan>
+                    <tspan x="399.996812" y="98" fill="#4A4A4A">     Beratung     Markt     </tspan>
+                    <tspan x="596.772813" y="98" fill="#4A4A4A">Software     Events     Über uns</tspan>
+                    <tspan x="844.614813" y="98" fill="#4A4A4A">     </tspan>
+                    <tspan x="869.634813" y="98" font-weight="633" fill="#C6CA00">Produkte Finder </tspan>
+                </text>
+                <g id="3D-Logo-Copy-2" transform="translate(0.000000, 23.000000)">
+                    <mask id="mask-2" sketch:name="Mask" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#005584" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                    <g id="IAZI" mask="url(#mask-2)">
+                        <g transform="translate(15.065647, 15.900000)" id="Group">
+                            <g>
+                                <path d="M33.3081932,19.9637307 L45.9322388,4.11839451 L33.5087075,4.11839451 L33.5087075,0.355918465 L51.1762445,0.355918465 L51.1762445,4.11839451 L38.4519417,19.9637307 L51.3767588,19.9637307 L51.3767588,23.7262068 L33.3081932,23.7262068 L33.3081932,19.9637307" id="Fill-1" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                                <path d="M55.0974128,0.355918465 L59.305428,0.355918465 L59.305428,23.7262068 L55.0974128,23.7262068 L55.0974128,0.355918465 Z" id="Fill-2" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                                <path d="M17.5928856,39.9651304 C15.8550951,38.1485729 14.2537657,37.6531481 12.6162323,37.6531481 C7.73983616,37.6531481 4.49818846,41.3523199 4.49818846,46.0038082 C4.49818846,50.988332 7.73983616,54.6875038 12.6162323,54.6875038 C14.5183332,54.6875038 16.3563808,53.8287675 17.9242912,51.8470683 L21.3998722,54.291164 C19.2610531,57.1949037 16.0556094,58.4499798 12.5800284,58.4499798 C5.30024562,58.4499798 0.0896589751,53.5645409 0.0896589751,46.2707871 C0.0896589751,38.7761109 5.30024562,33.890672 12.5800284,33.890672 C15.788257,33.890672 18.528619,34.9145499 20.8651675,37.5870914 L17.5928856,39.9651304" id="Fill-3" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                                <path d="M24.8197549,34.4851818 L29.0277701,34.4851818 L29.0277701,57.8554701 L24.8197549,57.8554701 L24.8197549,34.4851818 Z" id="Fill-4" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                                <path d="M35.5472694,34.4851818 L50.8114199,34.4851818 L50.8114199,38.2476578 L39.7552846,38.2476578 L39.7552846,44.3881729 L50.1764579,44.3881729 L50.1764579,48.1506489 L39.7552846,48.1506489 L39.7552846,57.8554701 L35.5472694,57.8554701 L35.5472694,34.4851818" id="Fill-5" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                                <path d="M55.2979271,34.4851818 L59.5059423,34.4851818 L59.5059423,57.8554701 L55.2979271,57.8554701 L55.2979271,34.4851818 Z" id="Fill-6" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                                <path d="M1.92770664,0.355918465 L6.13572183,0.355918465 L6.13572183,23.7262068 L1.92770664,23.7262068 L1.92770664,0.355918465 Z" id="Fill-7" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                                <path d="M18.2974706,0.355918465 L21.9401469,0.355918465 L32.1273868,23.7262068 L27.3178287,23.7262068 L25.1121715,18.3783714 L14.8580935,18.3783714 L12.7192744,23.7262068 L8.00997347,23.7262068 L18.2974706,0.355918465 L18.2974706,0.355918465 Z M23.6417334,14.8140653 L20.001842,5.30741401 L16.2951126,14.8140653 L23.6417334,14.8140653 L23.6417334,14.8140653 Z" id="Fill-8" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

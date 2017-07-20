@@ -1,0 +1,50 @@
+@import '../global.scss';
+
+page-list {
+
+    .item-note {
+        width: 70%;
+    }
+
+    .no-appraisals {
+        text-align: center;
+    }
+
+    .item-inner {
+        margin-left: 5px!important  ;
+    }
+
+    .filter-container {
+        ion-item {
+            background-color: #f9f9f9!important;
+        }
+    }
+    .home-redicon {
+        color :red!important;
+
+    }
+
+    .icon-appraisal-past {
+        ion-icon {
+            color: #C0C0C0;
+        }
+    }
+
+    .icon-appraisal-today {
+        ion-icon {
+            color: red;
+        }
+    }
+
+    .icon-appraisal-tomorrow {
+        ion-icon {
+            color: orange;
+        }
+    }
+
+    .icon-appraisal-aftertomorrow {
+        ion-icon {
+            color: brown;
+        }
+    }
+}
